@@ -18,7 +18,7 @@
         }
 
         public function criar(): string {
-            $title = "Nova Categoria";
+            $title = "Criar Nova Categoria";
             return (new Render())->render('categorias/criar', compact('title'));
         }
 
