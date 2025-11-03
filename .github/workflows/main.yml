@@ -22,5 +22,9 @@ jobs:
       - name: Instalar dependências (Composer)
         run: composer install --no-interaction --no-progress
 
+      - name: Instalar PHPUnit
+        run: composer require --dev phpunit/phpunit ^10
+
+
       - name: Testar projeto (PHPUnit)
         run: vendor/bin/phpunit
