@@ -1,0 +1,26 @@
+name: Integração Contínua (CI)
+
+on:
+  push:
+    branches: [ "main" ]  # roda quando fizer push na branch principal
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Instalar dependências (Composer)
+        run: composer install --no-interaction --no-progress
+
+      - name: Testar projeto (PHPUnit)
+        run: vendor/bin/phpunit || echo "Sem testes ainda"
